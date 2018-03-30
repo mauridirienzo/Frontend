@@ -1,0 +1,32 @@
+<header style="margin-bottom:20px">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">Welcome {{user}}</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right nav">
+        <li>
+          <button style="margin:5px" type="button" (click)="click()" class="btn btn-primary">Log Out</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div style="padding: 5px;">
+    <nav mat-tab-nav-bar >
+        <a mat-tab-link
+           *ngFor="let routeLink of routeLinks; let i = index;"
+           [routerLink]="routeLink.link"
+           routerLinkActive
+           #rla="routerLinkActive">
+            {{routeLink.label}}
+        </a>
+    </nav>
+
+    <router-outlet name="app-tab1"></router-outlet>
+</div>
+
+
+
+
