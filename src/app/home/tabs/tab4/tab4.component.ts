@@ -25,7 +25,7 @@ export class Tab4Component {
         }
         else {
           this.policies = res;
-        }
+          }
       });
   }
 }
