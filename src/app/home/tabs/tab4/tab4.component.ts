@@ -20,9 +20,12 @@ export class Tab4Component {
     this.http.get(environment.host + environment.port + environment.subdomain + 'policies/' + this.name).toPromise()
       .then(
       res => { // Success     
-        if (res.toString.length == 0)
+        if (res == null) {
           Swal("Policy not found", "Policies for " + name + " not found. Try with a new name", "info");
-        else this.policies = res;
+        }
+        else {
+          this.policies = res;
+        }
       });
   }
 }

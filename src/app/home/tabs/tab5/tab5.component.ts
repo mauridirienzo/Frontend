@@ -17,12 +17,15 @@ export class Tab5Component {
   client: any;
 
   click() {
-    this.http.get(environment.host + environment.port + + environment.subdomain + 'clients').toPromise()
+    this.http.get(environment.host + environment.port + environment.subdomain + 'clientPolicy/' + this.policy).toPromise()
       .then(
       res => { // Success     
-        if (res.toString.length == 0)
+        if (res.toString.length == 0) {
           Swal("Client not found", "Client with policy " + this.policy + " not found. Try with a new one", "info");
-        else this.client = res;
+        }
+        else {
+          this.client = res;
+        }
       });
   }
 }

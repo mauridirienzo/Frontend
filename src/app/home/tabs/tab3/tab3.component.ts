@@ -22,10 +22,12 @@ export class Tab3Component {
       res => { // Success
         this.clients = [];
 
-        if (res.toString.length ==0)
+        if (res == null) {
           Swal("Client not found", "Client with name: " + this.name + " not found. Try with a new name", "info");
-        else 
+        }
+        else {
           this.clients = res;
+        }
       });
   }
 }
