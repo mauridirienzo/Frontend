@@ -10,14 +10,16 @@ import { Tab5Component } from './home/tabs/tab5/tab5.component';
 
 const appRoutes: Routes = [
   {
-    path: 'home', component: HomeComponent },
+    path: 'home', component: HomeComponent,
+    children: [
+      { path: 'tab1', component: Tab1Component, outlet: "apptab1" },
+      { path: 'tab2', component: Tab2Component, outlet: "apptab1" },
+      { path: 'tab3', component: Tab3Component, outlet: "apptab1" },
+      { path: 'tab4', component: Tab4Component, outlet: "apptab1" },
+      { path: 'tab5', component: Tab5Component, outlet: "apptab1" }]
+  },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'home/tab1', component: Tab1Component },
-  { path: 'home/tab2', component: Tab2Component },
-  { path: 'home/tab3', component: Tab3Component },
-  { path: 'home/tab4', component: Tab4Component },
-  { path: 'home/tab5', component: Tab5Component }
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({

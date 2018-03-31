@@ -1,7 +1,7 @@
-<div class="tabContentContainer">
+<div style="margin-top:20px"class="tabContentContainer">
   <button (click)="click()" type="submit"  class="btn btn-danger">Get Clients</button>
   <br />
-  <table *ngIf="clients" class="table table-striped table-hover" [(ngModel)]="clients">
+  <table *ngIf="clients" class="table table-striped table-hover">
     <thead>
       <tr>
         <th>ID</th>
@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let client of clients">
+      <tr *ngFor="let client of clients" >
         <td>{{client.id}}</td>
         <td>{{client.name}}</td>
         <td>{{client.email}}</td>

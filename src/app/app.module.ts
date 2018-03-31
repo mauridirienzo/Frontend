@@ -16,9 +16,10 @@ import { Tab2Component } from './home/tabs/tab2/tab2.component';
 import { Tab3Component } from './home/tabs/tab3/tab3.component';
 import { Tab4Component } from './home/tabs/tab4/tab4.component';
 import { Tab5Component } from './home/tabs/tab5/tab5.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTabsModule } from '@angular/material';
-import {NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -34,13 +35,14 @@ import {NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    NoopAnimationsModule,
     FormsModule,
     AppRoutingModule,
     MatTabsModule,
     CommonModule,
     HttpClientModule,
-    NgbModule],
+    NgbModule,
+    MatToolbarModule],
 
   providers: [AuthenticationService, DataService,
     { provide: HTTP_INTERCEPTORS, useClass: AddHttpHeaderInterceptor, multi: true }],
