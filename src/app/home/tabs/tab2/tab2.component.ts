@@ -22,7 +22,7 @@ export class Tab2Component {
       res => { // Success
         this.client = null;
 
-        if (res.toString.length == 0) {
+        if (res == null) {
           Swal("Client not found", "Client with id " + this.client_id + " not found. Try with a new id", "info");
         } else {
           this.client = res;

@@ -42,6 +42,9 @@ export class AddHttpHeaderInterceptor implements HttpInterceptor {
        
         if (error instanceof HttpErrorResponse) {
           switch (error.status) {
+            case 112:
+              Swal("Connection Refused", "The server refuse the connection", "error");
+              return Observable.throw(error.error);
             case 400:
               return Observable.throw(error.error);
             case 401:
