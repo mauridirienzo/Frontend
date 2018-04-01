@@ -13,15 +13,15 @@ export class Tab4Component {
 
   constructor(private http: HttpClient) { }
   clients: any;
-  name;
+  clientName;
   policies: any;
 
   click() {
-    this.http.get(environment.host + environment.port + environment.subdomain + 'policies/' + this.name).toPromise()
+    this.http.get(environment.host + environment.port + environment.subdomain + 'policies/' + this.clientName).toPromise()
       .then(
-      res => { // Success     
-        if (res == null) {
-          Swal("Policy not found", "Policies for " + name + " not found. Try with a new name", "info");
+      (res : Array < String>)=> { // Success     
+        if (res.toString.length ==0 ) {
+          Swal("Policy not found", "Policies for " + this.clientName + " not found. Try with a new name", "info");
         }
         else {
           this.policies = res;

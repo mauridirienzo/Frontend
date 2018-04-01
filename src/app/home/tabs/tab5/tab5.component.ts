@@ -19,8 +19,8 @@ export class Tab5Component {
   click() {
     this.http.get(environment.host + environment.port + environment.subdomain + 'clientPolicy/' + this.policy).toPromise()
       .then(
-      res => { // Success     
-        if (res == null) {
+      (res: Array<String>) => { // Success     
+        if (res.length == 0) {
           Swal("Client not found", "Client with policy " + this.policy + " not found. Try with a new one", "info");
         }
         else {

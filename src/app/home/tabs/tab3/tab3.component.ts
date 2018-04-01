@@ -13,17 +13,16 @@ export class Tab3Component {
 
   constructor(private http: HttpClient) { }
   clients: any;
-  client: any;
-  name;
+  clientName;
 
   click() {
-    this.http.get(environment.host + environment.port + environment.subdomain + 'clientByname/' + this.name).toPromise()
+    this.http.get(environment.host + environment.port + environment.subdomain + 'clientByname/' + this.clientName).toPromise()
       .then(
-      res => { // Success
+      (res : Array<String>) => { // Success
         this.clients = [];
 
-        if (res.toString.length == 0) {
-          Swal("Client not found", "Client with name: " + this.name + " not found. Try with a new name", "info");
+        if (res.length ==0) {
+          Swal("Client not found", "Client with name: " + this.clientName + " not found. Try with a new name", "info");
         }
         else {
           this.clients = res;

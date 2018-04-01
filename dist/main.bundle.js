@@ -395,7 +395,7 @@ var Tab2Component = /** @class */ (function () {
 /***/ "./src/app/home/tabs/tab3/tab3.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"margin-top:20px\">\r\n  <form name=\"form\" role=\"form\">\r\n    <div class=\"form-group\">\r\n      Client Name:<br>\r\n      <input type=\"text\" name=\"name\" class=\"form-control\" [(ngModel)]=\"name\" required />\r\n      <span *ngIf=\"!name\" class=\"help-block\">Client name is required</span>\r\n    </div>\r\n    <button type=\"submit\" (click)=\"click()\"  [disabled]=\"!name\" class=\"btn btn-danger\">Find client</button>\r\n  </form>\r\n  <br />\r\n  <table *ngIf=\"clients\" class=\"table table-striped table-hover\" border=\"1\">\r\n    <thead>\r\n      <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Email</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let client of clients\">\r\n        <td>{{client.id}}</td>\r\n        <td>{{client.name}}</td>\r\n        <td>{{client.email}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
+module.exports = "<div style=\"margin-top:20px\">\r\n  <form name=\"form\" role=\"form\">\r\n    <div class=\"form-group\">\r\n      Client Name:<br>\r\n      <input type=\"text\" name=\"clientName\" class=\"form-control\" [(ngModel)]=\"clientName\" required />\r\n      <span *ngIf=\"!clientName\" class=\"help-block\">Client name is required</span>\r\n    </div>\r\n    <button type=\"submit\" (click)=\"click()\"  [disabled]=\"!clientName\" class=\"btn btn-danger\">Find client</button>\r\n  </form>\r\n  <br />\r\n  <table *ngIf=\"clients\" class=\"table table-striped table-hover\" border=\"1\">\r\n    <thead>\r\n      <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Email</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let client of clients\">\r\n        <td>{{client.id}}</td>\r\n        <td>{{client.name}}</td>\r\n        <td>{{client.email}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -428,11 +428,11 @@ var Tab3Component = /** @class */ (function () {
     }
     Tab3Component.prototype.click = function () {
         var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].host + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].port + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].subdomain + 'clientByname/' + this.name).toPromise()
+        this.http.get(__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].host + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].port + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].subdomain + 'clientByname/' + this.clientName).toPromise()
             .then(function (res) {
             _this.clients = [];
-            if (res.toString.length == 0) {
-                __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()("Client not found", "Client with name: " + _this.name + " not found. Try with a new name", "info");
+            if (res.length == 0) {
+                __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()("Client not found", "Client with name: " + _this.clientName + " not found. Try with a new name", "info");
             }
             else {
                 _this.clients = res;
@@ -458,7 +458,7 @@ var Tab3Component = /** @class */ (function () {
 /***/ "./src/app/home/tabs/tab4/tab4.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div  style=\"margin-top:20px\">\r\n  <form name=\"form\" role=\"form\">\r\n    <div class=\"form-group\">\r\n      Client Name:<br>\r\n      <input type=\"text\" name=\"name\" class=\"form-control\" [(ngModel)]=\"name\" required />\r\n      <span *ngIf=\"!name\"  class=\"help-block\">Client name is required</span>\r\n    </div>\r\n    <button type=\"submit\" (click)=\"click()\"  [disabled]=\"!name\" class=\"btn btn-danger\">Find client</button>\r\n  </form>\r\n  <br />\r\n  <table  *ngIf=\"policies\" class=\"table table-striped table-hover\" border=\"1\">\r\n    <thead>\r\n      <tr>\r\n        <th>Policy Id</th>\r\n        <th>Client Id</th>\r\n        <th>Email</th>\r\n        <th>Inception Date</th>\r\n        <th>Installment Payment</th>\r\n        <th>Amount Insured</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let policy of policies; \">\r\n        <td>{{policy.id}}</td>\r\n        <td>{{policy.clientId}}</td>\r\n        <td>{{policy.email}}</td>\r\n        <td>{{policy.inceptionDate}}</td>\r\n        <td>{{policy.installmentPayment}}</td>\r\n        <td>{{policy.amountInsured}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
+module.exports = "<div  style=\"margin-top:20px\">\r\n  <form name=\"form\" role=\"form\">\r\n    <div class=\"form-group\">\r\n      Client Name:<br>\r\n      <input type=\"text\" name=\"clientName\" class=\"form-control\" [(ngModel)]=\"clientName\" required />\r\n      <span *ngIf=\"!clientName\"  class=\"help-block\">Client name is required</span>\r\n    </div>\r\n    <button type=\"submit\" (click)=\"click()\"  [disabled]=\"!clientName\" class=\"btn btn-danger\">Find client</button>\r\n  </form>\r\n  <br />\r\n  <table  *ngIf=\"policies\" class=\"table table-striped table-hover\" border=\"1\">\r\n    <thead>\r\n      <tr>\r\n        <th>Policy Id</th>\r\n        <th>Client Id</th>\r\n        <th>Email</th>\r\n        <th>Inception Date</th>\r\n        <th>Installment Payment</th>\r\n        <th>Amount Insured</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let policy of policies; \">\r\n        <td>{{policy.id}}</td>\r\n        <td>{{policy.clientId}}</td>\r\n        <td>{{policy.email}}</td>\r\n        <td>{{policy.inceptionDate}}</td>\r\n        <td>{{policy.installmentPayment}}</td>\r\n        <td>{{policy.amountInsured}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -491,10 +491,10 @@ var Tab4Component = /** @class */ (function () {
     }
     Tab4Component.prototype.click = function () {
         var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].host + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].port + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].subdomain + 'policies/' + this.name).toPromise()
+        this.http.get(__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].host + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].port + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].subdomain + 'policies/' + this.clientName).toPromise()
             .then(function (res) {
-            if (res == null) {
-                __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()("Policy not found", "Policies for " + name + " not found. Try with a new name", "info");
+            if (res.toString.length == 0) {
+                __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()("Policy not found", "Policies for " + _this.clientName + " not found. Try with a new name", "info");
             }
             else {
                 _this.policies = res;
@@ -555,7 +555,7 @@ var Tab5Component = /** @class */ (function () {
         var _this = this;
         this.http.get(__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].host + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].port + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].subdomain + 'clientPolicy/' + this.policy).toPromise()
             .then(function (res) {
-            if (res == null) {
+            if (res.length == 0) {
                 __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()("Client not found", "Client with policy " + _this.policy + " not found. Try with a new one", "info");
             }
             else {
