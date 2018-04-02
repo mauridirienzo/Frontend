@@ -18,7 +18,7 @@ export class Tab3Component {
   click() {
     this.http.get(environment.host + environment.port + environment.subdomain + 'clientByname/' + this.clientName).toPromise()
       .then(
-      (res : Array<String>) => { // Success
+      (res : Array<String>) => { 
         this.clients = [];
 
         if (res.length ==0) {
