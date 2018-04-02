@@ -14,7 +14,7 @@ export class Tab4Component {
   constructor(private http: HttpClient) { }
 
   clientName;
-  policies: any;
+  policies = [];
 
   click() {
     this.http.get(environment.host + environment.port + environment.subdomain + 'policies/' + this.clientName).toPromise()

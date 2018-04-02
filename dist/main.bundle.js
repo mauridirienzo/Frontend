@@ -309,6 +309,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Tab1Component = /** @class */ (function () {
     function Tab1Component(http) {
         this.http = http;
+        this.clients = [];
     }
     Tab1Component.prototype.click = function () {
         var _this = this;
@@ -429,6 +430,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Tab3Component = /** @class */ (function () {
     function Tab3Component(http) {
         this.http = http;
+        this.clients = [];
     }
     Tab3Component.prototype.click = function () {
         var _this = this;
@@ -492,6 +494,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Tab4Component = /** @class */ (function () {
     function Tab4Component(http) {
         this.http = http;
+        this.policies = [];
     }
     Tab4Component.prototype.click = function () {
         var _this = this;

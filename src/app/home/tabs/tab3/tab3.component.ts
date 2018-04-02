@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class Tab3Component {
 
   constructor(private http: HttpClient) { }
-  clients: any;
+  clients = [];
   clientName;
 
   click() {

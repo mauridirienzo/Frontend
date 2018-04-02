@@ -11,12 +11,12 @@ import { environment } from '../../../../environments/environment';
 export class Tab1Component {
 
   constructor(private http: HttpClient) { }
-  clients: any;
+  clients = [];
 
   click() {
     this.http.get(environment.host + environment.port + environment.subdomain + 'clients').toPromise()
       .then(
-      res => { // Success     
+      (res : Array<String>) => { // Success     
         this.clients = res;
       });
   }
