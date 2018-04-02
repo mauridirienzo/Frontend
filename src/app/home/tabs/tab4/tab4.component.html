@@ -8,7 +8,10 @@
     <button type="submit" (click)="click()" [disabled]="!clientName" class="btn btn-danger">Find client</button>
   </form>
   <br />
-  <table *ngIf="policies.length > 0" class="table table-striped table-hover" border="1">
+</div>
+
+<div *ngIf="policies.length > 0">
+  <table class="table table-striped table-hover" border="1">
     <thead>
       <tr>
         <th>Policy Id</th>
@@ -37,3 +40,4 @@
                        autoHide="true">
   </pagination-controls>
 </div>
+

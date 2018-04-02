@@ -1,26 +1,28 @@
 <div style="margin-top:20px" class="tabContentContainer">
   <button (click)="click()" type="submit" class="btn btn-danger">Get Clients</button>
   <br />
-  <table *ngIf="clients.length > 0" class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let client of clients | paginate: {itemsPerPage: 15, currentPage:page, id: '1'};">
-        <td>{{client.id}}</td>
-        <td>{{client.name}}</td>
-        <td>{{client.email}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div *ngIf="clients.length > 0">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients | paginate: {itemsPerPage: 15, currentPage:page, id: '1'};">
+          <td>{{client.id}}</td>
+          <td>{{client.name}}</td>
+          <td>{{client.email}}</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <pagination-controls (pageChange)="page = $event" id="1"
-                       maxSize="15"
-                       directionLinks="true"
-                       autoHide="true">
-  </pagination-controls>
+    <pagination-controls (pageChange)="page = $event" id="1"
+                         maxSize="15"
+                         directionLinks="true"
+                         autoHide="true">
+    </pagination-controls>
+  </div>
 </div>
