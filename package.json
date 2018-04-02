@@ -27,6 +27,7 @@
     "core-js": "^2.4.1",
     "i": "^0.3.6",
     "md-tabs": "0.0.1-alpha.1",
+    "ng2-pagination": "^2.0.2",
     "ngx-bootstrap": "^2.0.3",
     "rxjs": "^5.5.6",
     "sweetalert": "^2.1.0",

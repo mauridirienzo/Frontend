@@ -20,6 +20,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { Ng2PaginationModule } from 'ng2-pagination'; //importing ng2-pagination
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     CommonModule,
     HttpClientModule,
     NgbModule,
-    MatToolbarModule],
+    MatToolbarModule,
+    Ng2PaginationModule ],
 
   providers: [AuthenticationService, DataService,
     { provide: HTTP_INTERCEPTORS, useClass: AddHttpHeaderInterceptor, multi: true }],

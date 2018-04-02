@@ -64,7 +64,7 @@ var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
     AppRoutingModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */].forRoot(appRoutes)],
             exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */]]
         })
@@ -107,7 +107,7 @@ var AppComponent = /** @class */ (function () {
     function AppComponent() {
     }
     AppComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
             template: __webpack_require__("./src/app/app.component.html"),
             styles: [__webpack_require__("./src/app/app.component.css")]
@@ -146,6 +146,8 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_material_tabs__ = __webpack_require__("./node_modules/@angular/material/esm5/tabs.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_ng2_pagination__ = __webpack_require__("./node_modules/ng2-pagination/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_ng2_pagination___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21_ng2_pagination__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -174,11 +176,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+ //importing ng2-pagination
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_3__login_login_component__["a" /* LoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__home_home_component__["a" /* HomeComponent */],
@@ -195,10 +198,11 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_11__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_19__angular_material_tabs__["a" /* MatTabsModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_common__["b" /* CommonModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_common__["CommonModule"],
                 __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["c" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_18__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */],
-                __WEBPACK_IMPORTED_MODULE_20__angular_material_toolbar__["a" /* MatToolbarModule */]
+                __WEBPACK_IMPORTED_MODULE_20__angular_material_toolbar__["a" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_21_ng2_pagination__["Ng2PaginationModule"]
             ],
             providers: [__WEBPACK_IMPORTED_MODULE_8__services_authentication_service_service__["a" /* AuthenticationService */], __WEBPACK_IMPORTED_MODULE_9__services_global_data_service__["a" /* DataService */],
                 { provide: __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["a" /* HTTP_INTERCEPTORS */], useClass: __WEBPACK_IMPORTED_MODULE_10__services_AddHttpHeaderInterceptor__["a" /* AddHttpHeaderInterceptor */], multi: true }],
@@ -261,7 +265,7 @@ var HomeComponent = /** @class */ (function () {
         this.router.navigate(['/']);
     };
     HomeComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
             template: __webpack_require__("./src/app/home/home.component.html"),
             styles: [__webpack_require__("./src/app/home/home.component.css")]
@@ -278,7 +282,7 @@ var HomeComponent = /** @class */ (function () {
 /***/ "./src/app/home/tabs/tab1/tab1.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"margin-top:20px\"class=\"tabContentContainer\">\r\n  <button (click)=\"click()\" type=\"submit\"  class=\"btn btn-danger\">Get Clients</button>\r\n  <br />\r\n  <table *ngIf=\"clients\" class=\"table table-striped table-hover\">\r\n    <thead>\r\n      <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Email</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let client of clients\" >\r\n        <td>{{client.id}}</td>\r\n        <td>{{client.name}}</td>\r\n        <td>{{client.email}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
+module.exports = "<div style=\"margin-top:20px\" class=\"tabContentContainer\">\r\n  <button (click)=\"click()\" type=\"submit\" class=\"btn btn-danger\">Get Clients</button>\r\n  <br />\r\n  <table *ngIf=\"clients\" class=\"table table-striped table-hover\">\r\n    <thead>\r\n      <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Email</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let client of clients | paginate: {itemsPerPage: 20, currentPage:page, id: '1'};\">\r\n        <td>{{client.id}}</td>\r\n        <td>{{client.name}}</td>\r\n        <td>{{client.email}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n\r\n  <pagination-controls (pageChange)=\"page = $event\" id=\"1\"\r\n                       maxSize=\"20\"\r\n                       directionLinks=\"true\"\r\n                       autoHide=\"true\">\r\n  </pagination-controls>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -314,11 +318,11 @@ var Tab1Component = /** @class */ (function () {
         });
     };
     Tab1Component = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             moduleId: module.i,
             selector: 'app-tab1',
             template: __webpack_require__("./src/app/home/tabs/tab1/tab1.component.html"),
-            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewEncapsulation */].None,
+            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */]])
     ], Tab1Component);
@@ -377,11 +381,11 @@ var Tab2Component = /** @class */ (function () {
         });
     };
     Tab2Component = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             moduleId: module.i,
             selector: 'app-tab2',
             template: __webpack_require__("./src/app/home/tabs/tab2/tab2.component.html"),
-            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewEncapsulation */].None,
+            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */]])
     ], Tab2Component);
@@ -395,7 +399,7 @@ var Tab2Component = /** @class */ (function () {
 /***/ "./src/app/home/tabs/tab3/tab3.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"margin-top:20px\">\r\n  <form name=\"form\" role=\"form\">\r\n    <div class=\"form-group\">\r\n      Client Name:<br>\r\n      <input type=\"text\" name=\"clientName\" class=\"form-control\" [(ngModel)]=\"clientName\" required />\r\n      <span *ngIf=\"!clientName\" class=\"help-block\">Client name is required</span>\r\n    </div>\r\n    <button type=\"submit\" (click)=\"click()\"  [disabled]=\"!clientName\" class=\"btn btn-danger\">Find client</button>\r\n  </form>\r\n  <br />\r\n  <table *ngIf=\"clients\" class=\"table table-striped table-hover\" border=\"1\">\r\n    <thead>\r\n      <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Email</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let client of clients\">\r\n        <td>{{client.id}}</td>\r\n        <td>{{client.name}}</td>\r\n        <td>{{client.email}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
+module.exports = "<div style=\"margin-top:20px\">\r\n  <form name=\"form\" role=\"form\">\r\n    <div class=\"form-group\">\r\n      Client Name:<br>\r\n      <input type=\"text\" name=\"clientName\" class=\"form-control\" [(ngModel)]=\"clientName\" required />\r\n      <span *ngIf=\"!clientName\" class=\"help-block\">Client name is required</span>\r\n    </div>\r\n    <button type=\"submit\" (click)=\"click()\" [disabled]=\"!clientName\" class=\"btn btn-danger\">Find client</button>\r\n  </form>\r\n  <br />\r\n  <table *ngIf=\"clients\" class=\"table table-striped table-hover\" border=\"1\">\r\n    <thead>\r\n      <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Email</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let client of clients | paginate: {itemsPerPage: 20, currentPage:page, id: '1'}\">\r\n        <td>{{client.id}}</td>\r\n        <td>{{client.name}}</td>\r\n        <td>{{client.email}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n\r\n  <pagination-controls (pageChange)=\"page = $event\" id=\"1\"\r\n                       maxSize=\"20\"\r\n                       directionLinks=\"true\"\r\n                       autoHide=\"true\">\r\n  </pagination-controls>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -440,11 +444,11 @@ var Tab3Component = /** @class */ (function () {
         });
     };
     Tab3Component = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             moduleId: module.i,
             selector: 'app-tab3',
             template: __webpack_require__("./src/app/home/tabs/tab3/tab3.component.html"),
-            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewEncapsulation */].None,
+            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClient */]])
     ], Tab3Component);
@@ -458,7 +462,7 @@ var Tab3Component = /** @class */ (function () {
 /***/ "./src/app/home/tabs/tab4/tab4.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div  style=\"margin-top:20px\">\r\n  <form name=\"form\" role=\"form\">\r\n    <div class=\"form-group\">\r\n      Client Name:<br>\r\n      <input type=\"text\" name=\"clientName\" class=\"form-control\" [(ngModel)]=\"clientName\" required />\r\n      <span *ngIf=\"!clientName\"  class=\"help-block\">Client name is required</span>\r\n    </div>\r\n    <button type=\"submit\" (click)=\"click()\"  [disabled]=\"!clientName\" class=\"btn btn-danger\">Find client</button>\r\n  </form>\r\n  <br />\r\n  <table  *ngIf=\"policies\" class=\"table table-striped table-hover\" border=\"1\">\r\n    <thead>\r\n      <tr>\r\n        <th>Policy Id</th>\r\n        <th>Client Id</th>\r\n        <th>Email</th>\r\n        <th>Inception Date</th>\r\n        <th>Installment Payment</th>\r\n        <th>Amount Insured</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let policy of policies; \">\r\n        <td>{{policy.id}}</td>\r\n        <td>{{policy.clientId}}</td>\r\n        <td>{{policy.email}}</td>\r\n        <td>{{policy.inceptionDate}}</td>\r\n        <td>{{policy.installmentPayment}}</td>\r\n        <td>{{policy.amountInsured}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
+module.exports = "<div style=\"margin-top:20px\">\r\n  <form name=\"form\" role=\"form\">\r\n    <div class=\"form-group\">\r\n      Client Name:<br>\r\n      <input type=\"text\" name=\"clientName\" class=\"form-control\" [(ngModel)]=\"clientName\" required />\r\n      <span *ngIf=\"!clientName\" class=\"help-block\">Client name is required</span>\r\n    </div>\r\n    <button type=\"submit\" (click)=\"click()\" [disabled]=\"!clientName\" class=\"btn btn-danger\">Find client</button>\r\n  </form>\r\n  <br />\r\n  <table *ngIf=\"policies\" class=\"table table-striped table-hover\" border=\"1\">\r\n    <thead>\r\n      <tr>\r\n        <th>Policy Id</th>\r\n        <th>Client Id</th>\r\n        <th>Email</th>\r\n        <th>Inception Date</th>\r\n        <th>Installment Payment</th>\r\n        <th>Amount Insured</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let policy of policies | paginate: {itemsPerPage: 20, currentPage:page, id: '1'}; \">\r\n        <td>{{policy.id}}</td>\r\n        <td>{{policy.clientId}}</td>\r\n        <td>{{policy.email}}</td>\r\n        <td>{{policy.inceptionDate}}</td>\r\n        <td>{{policy.installmentPayment}}</td>\r\n        <td>{{policy.amountInsured}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n\r\n  <pagination-controls (pageChange)=\"page = $event\" id=\"1\"\r\n                       maxSize=\"20\"\r\n                       directionLinks=\"true\"\r\n                       autoHide=\"true\">\r\n  </pagination-controls>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -493,7 +497,7 @@ var Tab4Component = /** @class */ (function () {
         var _this = this;
         this.http.get(__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].host + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].port + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].subdomain + 'policies/' + this.clientName).toPromise()
             .then(function (res) {
-            if (res.toString.length == 0) {
+            if (res.length == 0) {
                 __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()("Policy not found", "Policies for " + _this.clientName + " not found. Try with a new name", "info");
             }
             else {
@@ -502,11 +506,11 @@ var Tab4Component = /** @class */ (function () {
         });
     };
     Tab4Component = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             moduleId: module.i,
             selector: 'app-tab4',
             template: __webpack_require__("./src/app/home/tabs/tab4/tab4.component.html"),
-            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewEncapsulation */].None,
+            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClient */]])
     ], Tab4Component);
@@ -555,7 +559,7 @@ var Tab5Component = /** @class */ (function () {
         var _this = this;
         this.http.get(__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].host + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].port + __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].subdomain + 'clientPolicy/' + this.policy).toPromise()
             .then(function (res) {
-            if (res.length == 0) {
+            if (res == null) {
                 __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()("Client not found", "Client with policy " + _this.policy + " not found. Try with a new one", "info");
             }
             else {
@@ -564,11 +568,11 @@ var Tab5Component = /** @class */ (function () {
         });
     };
     Tab5Component = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             moduleId: module.i,
             selector: 'app-tab5',
             template: __webpack_require__("./src/app/home/tabs/tab5/tab5.component.html"),
-            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewEncapsulation */].None,
+            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClient */]])
     ], Tab5Component);
@@ -642,7 +646,7 @@ var LoginComponent = /** @class */ (function () {
         });
     };
     LoginComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
             template: __webpack_require__("./src/app/login/login.component.html"),
             styles: [__webpack_require__("./src/app/login/login.component.css")]
@@ -734,7 +738,7 @@ var AddHttpHeaderInterceptor = /** @class */ (function () {
         });
     };
     AddHttpHeaderInterceptor = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_6__angular_core__["B" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_6__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7__angular_router__["a" /* Router */], __WEBPACK_IMPORTED_MODULE_5__global_data_service__["a" /* DataService */]])
     ], AddHttpHeaderInterceptor);
     return AddHttpHeaderInterceptor;
@@ -793,7 +797,7 @@ var AuthenticationService = /** @class */ (function () {
         });
     };
     AuthenticationService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1__global_data_service__["a" /* DataService */]])
     ], AuthenticationService);
     return AuthenticationService;
@@ -820,7 +824,7 @@ var DataService = /** @class */ (function () {
     function DataService() {
     }
     DataService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])()
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
     ], DataService);
     return DataService;
 }());
@@ -862,7 +866,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });

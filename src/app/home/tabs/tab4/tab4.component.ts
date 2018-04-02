@@ -19,8 +19,8 @@ export class Tab4Component {
   click() {
     this.http.get(environment.host + environment.port + environment.subdomain + 'policies/' + this.clientName).toPromise()
       .then(
-      (res : Array < String>)=> { // Success     
-        if (res.toString.length ==0 ) {
+      (res : Array <String>)=> { // Success     
+        if (res.length ==0 ) {
           Swal("Policy not found", "Policies for " + this.clientName + " not found. Try with a new name", "info");
         }
         else {
