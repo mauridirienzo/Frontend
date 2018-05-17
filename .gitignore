@@ -10,6 +10,9 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# angular modules
+node_modules
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
